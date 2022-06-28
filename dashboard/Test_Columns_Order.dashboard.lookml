@@ -5,6 +5,33 @@
   description: ''
   preferred_slug: uOmwg5WWFIJHn9iFrXmGk1
   elements:
+  - name: New_Tile
+    title: New_Tile
+    merged_queries:
+    - model: thelook_carlos
+      explore: user_data
+      type: table
+      fields: [users.state, users.count, user_data.count]
+      sorts: [users.state]
+      limit: 500
+      query_timezone: America/Los_Angeles
+    - model: thelook_carlos
+      explore: order_items
+      type: table
+      fields: [users.state, inventory_items.count]
+      filters:
+        users.state: "-NULL"
+      sorts: [users.state]
+      limit: 500
+      query_timezone: America/Los_Angeles
+      join_fields:
+      - field_name: users.state
+        source_field_name: users.state
+    type: table
+    row: 0
+    col: 0
+    width: 7
+    height: 12
   - title: Test_T_518380
     name: Test_T_518380
     model: thelook_carlos
