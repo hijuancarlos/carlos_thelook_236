@@ -5,6 +5,36 @@
   description: ''
   preferred_slug: uOmwg5WWFIJHn9iFrXmGk1
   elements:
+  - name: Merge table
+    title: Merge table
+    merged_queries:
+    - model: thelook_carlos
+      explore: user_data
+      type: table
+      fields: [users.state, users.count, user_data.count]
+      sorts: [users.state]
+      limit: 500
+      query_timezone: America/Los_Angeles
+      join_fields: []
+    - model: thelook_carlos
+      explore: order_items
+      type: table
+      fields: [users.state, inventory_items.count, users.country]
+      filters:
+        users.state: "-NULL"
+      sorts: [users.state]
+      limit: 500
+      query_timezone: America/Los_Angeles
+      join_fields:
+      - field_name: users.state
+        source_field_name: users.state
+    type: table
+    pivots: [users.country]
+    column_limit: 50
+    row: 0
+    col: 0
+    width: 12
+    height: 8
   - name: New_Tile
     title: New_Tile
     merged_queries:
