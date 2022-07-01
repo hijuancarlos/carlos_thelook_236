@@ -4,13 +4,13 @@ view: chi_square_example_dt {
 
     sql:
 
-    select 'aa00' as experimentId, 0 as variant, 188900 as observed, 188614 as expected,
+    select 'aa00' as experimentId, 0 as variant, 188900 as observed, 188614 as expected
     union all
-    select 'aa00' as experimentId, 1 as variant, 187971 as observed, 188614 as expected,
+    select 'aa00' as experimentId, 1 as variant, 187971 as observed, 188614 as expected
     union all
-    select 'aa00' as experimentId, 2 as variant, 188971 as observed, 188614 as expected,
+    select 'aa00' as experimentId, 2 as variant, 188971 as observed, 188614 as expected
     union all
-    select 'aa01' as experimentId, 0 as variant, 177650 as observed, 176925 as expected,
+    select 'aa01' as experimentId, 0 as variant, 177650 as observed, 176925 as expected
     union all
     select 'aa01' as experimentId, 1 as variant, 176200 as observed, 176925 as expected
 
