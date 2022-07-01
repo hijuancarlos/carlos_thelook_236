@@ -51,4 +51,14 @@ view: inventory_items {
     type: count
     drill_fields: [id, products.id, products.item_name, order_items.count]
   }
+
+measure: total_cost {
+  type: sum
+  sql: ${TABLE}.cost ;;
+}
+
+  measure: test_using_a_measure {
+    type: number
+    sql: ${inventory_items.total_cost} / ${order_items.count};;
+  }
 }

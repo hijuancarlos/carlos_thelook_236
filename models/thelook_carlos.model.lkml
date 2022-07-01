@@ -93,6 +93,7 @@ explore: incremental_pdts_test {}
 explore: ints {}
 
 explore: inventory_items {
+  fields: [ALL_FIELDS*, -inventory_items.test_using_a_measure]
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
