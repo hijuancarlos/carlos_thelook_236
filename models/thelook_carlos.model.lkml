@@ -195,3 +195,5 @@ explore: user_data {
     relationship: many_to_one
   }
 }
+
+explore: chi_square_example_dt {}
