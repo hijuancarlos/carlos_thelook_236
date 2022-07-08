@@ -24,14 +24,14 @@ view: orders {
 
   ##Test----
 
-  dimension: max_close_date {
+  dimension: max_create_date {
     type: string
     sql: (SELECT MAX(created_at) FROM demo_db.users) ;;
   }
 
   dimension: is_max_close_date {
     type: yesno
-    sql: ${created_raw} = ${max_close_date};;
+    sql: ${created_raw} = ${max_create_date};;
   }
 
 
