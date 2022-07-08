@@ -22,6 +22,19 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+  ##Test----
+
+  dimension: max_close_date {
+    type: string
+    sql: (SELECT MAX(created_at) FROM demo_db.users) ;;
+  }
+
+  dimension: is_max_close_date {
+    type: yesno
+    sql: ${created_raw} = ${max_close_date};;
+  }
+
+
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
@@ -38,6 +51,12 @@ view: orders {
     drill_fields: [detail*]
   }
 
+  measure: Last_Create_Date {
+    type: date
+    #sql: MAX(${TABLE}.created_at) ;;
+    sql: MAX(${TABLE}.created_at);;
+    convert_tz: no
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
@@ -53,4 +72,10 @@ view: orders {
       ten_million_orders.count
     ]
   }
+
+
+
+
+
+
 }
