@@ -10,6 +10,8 @@ datagroup: thelook_carlos_default_datagroup {
 
 persist_with: thelook_carlos_default_datagroup
 
+explore: dt_orders{}
+
 explore: imgsrc1onerroralert2 {}
 
 explore: account {}
