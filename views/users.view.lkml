@@ -73,6 +73,19 @@ view: users {
     drill_fields: [detail*]
   }
 
+
+  dimension: test_city {
+    type: string
+    sql: ${TABLE}.city ;;
+    suggest_explore: users_test
+    suggest_dimension: dt_suggestions.users_state
+    }
+
+  dimension: date_formatted {
+    sql: ${created_date} ;;
+    html: {{ rendered_value | date: "%A, %B %e, %Y" }} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

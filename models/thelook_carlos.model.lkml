@@ -205,4 +205,16 @@ explore: user_data {
   }
 }
 
+explore: users_test {
+  from: users
+  join: dt_suggestions {
+    sql_on: ${users_test.country} = ${dt_suggestions.users_country} ;;
+    relationship: one_to_one
+  }
+}
+
+explore: dt_suggestions {}
+
 explore: chi_square_example_dt {}
+
+explore: dt_timeline_test {}
