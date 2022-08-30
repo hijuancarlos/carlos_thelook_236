@@ -43,6 +43,12 @@ view: users {
     sql: ${TABLE}.email ;;
   }
 
+  dimension: gender_1 {
+    type: yesno
+    sql: 1 ;;
+    drill_fields: [detail*,email,age]
+  }
+
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
@@ -70,7 +76,7 @@ view: users {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    drill_fields: [detail*,email,age]
   }
 
 
@@ -98,5 +104,12 @@ view: users {
       sindhu.count,
       user_data.count
     ]
+  }
+
+  set: test {
+    fields: [
+      sindhu.count,
+      user_data.count
+      ]
   }
 }

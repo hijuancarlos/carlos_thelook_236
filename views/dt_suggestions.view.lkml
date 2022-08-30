@@ -1,10 +1,10 @@
 view: dt_suggestions {
   derived_table: {
     sql: SELECT
-          DISTINCT(users.state)  AS `users.state`,
-          users.country  AS `users.country`
+          DISTINCT(users.state)  AS state,
+          users.country  AS country
       FROM demo_db.users  AS users
-      WHERE {% condition dt_suggestions.country_filter %} dt_suggestions.users_country {% endcondition %}
+      WHERE {% condition dt_suggestions.country_filter %} users.country {% endcondition %}
       group by users.city
       ORDER BY
           users.state
@@ -20,12 +20,12 @@ filter: country_filter {type:string}
 
   dimension: users_state {
     type: string
-    sql: ${TABLE}.`users.state` ;;
+    sql: ${TABLE}.state ;;
   }
 
   dimension: users_country {
     type: string
-    sql: ${TABLE}.`users.country` ;;
+    sql: ${TABLE}.country ;;
   }
 
   set: detail {
