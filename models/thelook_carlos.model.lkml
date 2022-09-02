@@ -97,17 +97,12 @@ explore: incremental_pdts_test {}
 explore: ints {}
 
 explore: inventory_items {
-  fields: [ALL_FIELDS*, -inventory_items.test_using_a_measure]
+  fields: [ALL_FIELDS*, -inventory_items.test_using_a_measure, -inventory_items.avg_test, -products.total_test]
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
-# join: order_items {
-#   type: left_outer
-#   sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
-#   relationship: many_to_one
-# }
 }
 
 explore: orders {
@@ -119,7 +114,7 @@ explore: orders {
 }
 
 explore: order_items {
-  join: orders {
+   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one
@@ -152,7 +147,9 @@ explore: persons {}
 
 explore: persons2 {}
 
-explore: products {}
+explore: products {
+  fields: [ALL_FIELDS*, -products.total_test]
+}
 
 explore: salary {
   join: dept {

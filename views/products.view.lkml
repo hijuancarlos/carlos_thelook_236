@@ -53,4 +53,13 @@ measure: total_retail_price {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+
+  measure: total_test {
+    type: count_distinct
+    sql:  ${id} ;;
+    filters: {
+      field: order_items.order_id
+      value: "50"
+    }
+  }
 }

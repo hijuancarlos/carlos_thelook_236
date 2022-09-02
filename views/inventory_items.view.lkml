@@ -61,4 +61,13 @@ measure: total_cost {
     type: number
     sql: ${inventory_items.total_cost} / ${order_items.count};;
   }
+
+  measure: avg_test {
+    type: average
+    sql: ${cost} ;;
+    filters: {
+      field: order_items.order_id
+      value:"100"
+    }
+  }
 }

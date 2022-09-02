@@ -64,6 +64,7 @@ view: orders {
     type: date
   }
 
+##Ticket 529170 bug: 244354400
   dimension: start_date {
     hidden: yes
     type: date
@@ -74,6 +75,8 @@ view: orders {
     type: date
     sql: {% date_end day %} ;;
   }
+
+##---------------------------------------
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
