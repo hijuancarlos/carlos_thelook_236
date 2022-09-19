@@ -43,6 +43,12 @@ view: users {
     sql: ${TABLE}.email ;;
   }
 
+  dimension: gender_1 {
+    type: yesno
+    sql: 1 ;;
+    drill_fields: [detail*,email,age]
+  }
+
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
@@ -76,10 +82,23 @@ view: users {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    drill_fields: [detail*,email,age]
   }
 
+
+  dimension: test_city {
+    type: string
+    sql: ${TABLE}.city ;;
+    suggest_explore: users_test
+    suggest_dimension: dt_suggestions.users_state
+    }
+
   dimension: date_formatted {
+    sql: ${created_date} ;;
+    html: {{ rendered_value | date: "%A, %B %e, %Y" }} ;;
+  }
+
+  dimension: date_formatted_1 {
     sql: ${created_date} ;;
     html: {{ rendered_value | date: "%A, %B %e, %Y" }} ;;
   }
@@ -98,9 +117,18 @@ view: users {
     ]
   }
 
+#<<<<<<< HEAD
   measure: avg_age {
     type: average
     sql: ${age} ;;
     drill_fields: [detail*]
+#=======
+}
+  set: test {
+    fields: [
+      sindhu.count,
+      user_data.count
+      ]
+#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
   }
 }

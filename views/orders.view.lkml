@@ -2,6 +2,7 @@ view: orders {
   sql_table_name: demo_db.orders ;;
   drill_fields: [id]
 
+
   dimension: id {
     primary_key: yes
     type: number
@@ -57,6 +58,25 @@ view: orders {
     sql: MAX(${TABLE}.created_at);;
     convert_tz: no
   }
+
+  ##-----------------------------------------
+  filter: day {
+    type: date
+  }
+
+##Ticket 529170 bug: 244354400
+  dimension: start_date {
+    hidden: yes
+    type: date
+    sql: {% date_start day %} ;;
+  }
+
+  dimension: end_date {
+    type: date
+    sql: {% date_end day %} ;;
+  }
+
+##---------------------------------------
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
@@ -73,6 +93,7 @@ view: orders {
     ]
   }
 
+#<<<<<<< HEAD
 
 dimension: TEST {
   type: string
@@ -87,4 +108,6 @@ dimension: TEST {
 
   }
 
+#=======
+#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
 }

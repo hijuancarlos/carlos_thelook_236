@@ -1,6 +1,7 @@
 view: dt_orders {
 
   derived_table: {
+#<<<<<<< HEAD
     sql: SELECT id,created,max_create_date
       from orders as A
       ;;
@@ -31,5 +32,4 @@ view: dt_orders {
     sql: ${TABLE}.max_create_date;;
   }
 
-
-  }
+}
