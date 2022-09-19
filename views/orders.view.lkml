@@ -26,7 +26,7 @@ view: orders {
 
   dimension: max_create_date {
     type: string
-    sql: (SELECT MAX(created_at) FROM demo_db.users) ;;
+    sql: (SELECT MAX(created_at) FROM  demo_db.orders) ;;
   }
 
   dimension: is_max_close_date {
@@ -48,7 +48,7 @@ view: orders {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    #drill_fields: [orders*]
   }
 
   measure: Last_Create_Date {
@@ -74,8 +74,17 @@ view: orders {
   }
 
 
+dimension: TEST {
+  type: string
+  sql: CASE WHEN ${is_max_close_date} THEN @{get_user_name} ELSE ${max_create_date} END;;
+  # sql: @{get_user_name} ;;
 
+}
 
+  dimension: new_dimension{
+    type: string
+    sql: (select * from  [SCHEMA].NOT_NULL_GA_SESSION_CDS_SURROGATE_KEY);;
 
+  }
 
 }

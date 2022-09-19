@@ -48,6 +48,12 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
+  dimension: first_name_constant{
+    type: string
+    sql: @{get_first_name} ;;
+
+  }
+
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
@@ -73,6 +79,11 @@ view: users {
     drill_fields: [detail*]
   }
 
+  dimension: date_formatted {
+    sql: ${created_date} ;;
+    html: {{ rendered_value | date: "%A, %B %e, %Y" }} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
@@ -85,5 +96,11 @@ view: users {
       sindhu.count,
       user_data.count
     ]
+  }
+
+  measure: avg_age {
+    type: average
+    sql: ${age} ;;
+    drill_fields: [detail*]
   }
 }
