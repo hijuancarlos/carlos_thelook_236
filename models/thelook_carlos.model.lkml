@@ -12,6 +12,8 @@ datagroup: thelook_carlos_default_datagroup {
 
 persist_with: thelook_carlos_default_datagroup
 
+explore: dt_test_529490 {}
+
 explore: dt_orders{}
 
 explore: imgsrc1onerroralert2 {}
@@ -211,7 +213,9 @@ explore: users_test {
   }
 }
 
-explore: dt_suggestions {}
+explore: dt_suggestions {
+  hidden: yes
+}
 
 explore: chi_square_example_dt {}
 

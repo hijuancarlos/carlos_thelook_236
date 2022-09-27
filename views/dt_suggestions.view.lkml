@@ -4,28 +4,27 @@ view: dt_suggestions {
           DISTINCT(users.state)  AS state,
           users.country  AS country
       FROM demo_db.users  AS users
-      WHERE {% condition dt_suggestions.country_filter %} users.country {% endcondition %}
+
       group by users.city
       ORDER BY
           users.state
        ;;
   }
 
-filter: country_filter {type:string}
+#filter: country_filter {type:string}
+#filter: date_test {type: date}
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
 
   dimension: users_state {
     type: string
     sql: ${TABLE}.state ;;
+    hidden: yes
   }
 
   dimension: users_country {
     type: string
     sql: ${TABLE}.country ;;
+    hidden: yes
   }
 
   set: detail {
