@@ -12,9 +12,13 @@ datagroup: thelook_carlos_default_datagroup {
 
 persist_with: thelook_carlos_default_datagroup
 
+#<<<<<<< HEAD
 explore: dt_test_529490 {}
 
 explore: dt_orders{}
+#=======
+#explore: dt_orders{}
+#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
 
 explore: imgsrc1onerroralert2 {}
 
@@ -105,6 +109,14 @@ explore: inventory_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+#<<<<<<< HEAD
+  join: order_items {
+    type: left_outer
+    sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
+    relationship: many_to_one
+  }
+#=======
+#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
 }
 
 explore: orders {
@@ -219,4 +231,6 @@ explore: dt_suggestions {
 
 explore: chi_square_example_dt {}
 
+#=======
 explore: dt_timeline_test {}
+#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git

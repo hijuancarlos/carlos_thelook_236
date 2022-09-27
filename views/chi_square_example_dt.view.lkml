@@ -42,7 +42,7 @@ view: chi_square_example_dt {
 
     type: sum
 
-    sql: ${TABLE}.observed ;;
+    sql: COALESCE(${TABLE}.observed,0) ;;
 
   }
 
@@ -51,7 +51,7 @@ view: chi_square_example_dt {
 
     type: sum
 
-    sql: ${TABLE}.expected ;;
+    sql: COALESCE(${TABLE}.expected,0) ;;
 
   }
 

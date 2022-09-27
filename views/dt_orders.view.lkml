@@ -1,30 +1,16 @@
 view: dt_orders {
 
   derived_table: {
-    sql:  SELECT * FROM demo_db.users;;
-
+#<<<<<<< HEAD
+    sql: SELECT id,created,max_create_date
+      from orders as A
+      ;;
   }
 
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
-  }
-
-  dimension: age {
-    type: number
-    sql: ${TABLE}.age ;;
-  }
-
-  dimension: city {
-    type: string
-    sql: ${TABLE}.city ;;
-  }
-
-  dimension: country {
-    type: string
-    map_layer_name: countries
-    sql: ${TABLE}.country ;;
   }
 
   dimension_group: created {
@@ -41,56 +27,9 @@ view: dt_orders {
     sql: ${TABLE}.created_at ;;
   }
 
-  dimension: email {
+  dimension: max_create_date {
     type: string
-    sql: ${TABLE}.email ;;
+    sql: ${TABLE}.max_create_date;;
   }
-
-  dimension: first_name {
-    type: string
-    sql: ${TABLE}.first_name ;;
-  }
-
-  dimension: gender {
-    type: string
-    sql: ${TABLE}.gender ;;
-  }
-
-  dimension: last_name {
-    type: string
-    sql: ${TABLE}.last_name ;;
-  }
-
-  dimension: state {
-    type: string
-    sql: ${TABLE}.state ;;
-  }
-
-  dimension: zip {
-    type: zipcode
-    sql: ${TABLE}.zip ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-
-  # ----- Sets of fields for drilling ------
-  set: detail {
-    fields: [
-      id,
-      first_name,
-      last_name,
-      events.count,
-      orders.count,
-      saralooker.count,
-      sindhu.count,
-      user_data.count
-    ]
-  }
-
-
-
 
 }

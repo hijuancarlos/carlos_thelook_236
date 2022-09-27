@@ -60,6 +60,12 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
+  dimension: first_name_constant{
+    type: string
+    sql: @{get_first_name} ;;
+
+  }
+
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
@@ -163,11 +169,19 @@ view: users {
     ]
   }
 
+#<<<<<<< HEAD
+  measure: avg_age {
+    type: average
+    sql: ${age} ;;
+    drill_fields: [detail*]
+#=======
+}
   set: test {
     fields: [
       sindhu.count,
       user_data.count
       ]
+#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
   }
 
 
@@ -221,7 +235,7 @@ view: users {
     sql: (SELECT max(${TABLE}.created_at) FROM users)  ;;
   }
 
-  measure: avg_age {
+  measure: avg_age_1 {
     type: average
     sql: ${age} ;;
     drill_fields: [detail*]
