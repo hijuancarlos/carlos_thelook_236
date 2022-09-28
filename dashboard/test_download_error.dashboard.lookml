@@ -1,5 +1,5 @@
-- dashboard: highchart_pdf_render_error_with_a_trend_line
-  title: Highchart PDF Render error with a trend line
+- dashboard: highchart_pdf_render_error_with_a_pivoted_and_stacked_values
+  title: Highchart PDF Render error with a pivoted and stacked values
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -1150,6 +1150,54 @@
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+  - title: New Tile
+    name: New Tile
+    model: balcazartest
+    explore: order_items
+    type: looker_column
+    fields: [users.state, products.category, orders.count, users.count]
+    pivots: [products.category]
+    filters:
+      users.state: California
+    sorts: [orders.count desc 0, products.category]
+    limit: 50
+    column_limit: 10
+    total: true
+    row_total: right
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: pivot
+    stacking: normal
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    hide_legend: true
+    defaults_version: 1
+    listen: {}
+    row: 0
+    col: 0
+    width: 24
+    height: 13
   filters:
   - name: Gender
     title: Gender
