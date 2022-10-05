@@ -234,3 +234,5 @@ explore: chi_square_example_dt {}
 #=======
 explore: dt_timeline_test {}
 #>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
+
+explore: dt_pivot_image_test {}
