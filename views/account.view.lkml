@@ -27,6 +27,8 @@ view: account {
     sql: ${TABLE}.created ;;
   }
 
+  #comentario de testeo
+
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
