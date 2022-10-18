@@ -6,6 +6,32 @@
   description: ''
   filters_location_top: false
   filters:
+  - name: Gender
+    title: Gender
+    type: field_filter
+    default_value: "-NULL"
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+    model: thelook_carlos
+    explore: order_items
+    listens_to_filters: []
+    field: users.gender
+  - name: Created Year
+    title: Created Year
+    type: field_filter
+    default_value: NOT NULL
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+    model: thelook_carlos
+    explore: order_items
+    listens_to_filters: []
+    field: orders.created_year
 
   elements:
   - title: Tile Stacked 1
