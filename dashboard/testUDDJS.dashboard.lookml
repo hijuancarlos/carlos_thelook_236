@@ -1,9 +1,11 @@
 - dashboard: testUDDJS
   title: Test Ticket 523578 Scenario G
   layout: newspaper
-  preferred_viewer: dashboards-next
+  #preferred_viewer: dashboards-next
   description: ''
   preferred_slug: AiTvccLrc58HHTzECffw3a
+  filters_bar_collapsed: true
+  filters_location_top: false
   elements:
   - name: Scorecard Metrics
     title: Scorecard Metrics
