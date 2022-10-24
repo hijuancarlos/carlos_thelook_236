@@ -93,8 +93,6 @@ view: orders {
     ]
   }
 
-#<<<<<<< HEAD
-
 dimension: TEST {
   type: string
   sql: CASE WHEN ${is_max_close_date} THEN @{get_user_name} ELSE ${max_create_date} END;;
@@ -108,6 +106,11 @@ dimension: TEST {
 
   }
 
-#=======
-#>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
+  measure: count_of_cancellations {
+    type: number
+    sql:COUNT(distinct ${id}) ;;
+    drill_fields: [id,user_id,status]
+    #sql_distinct_key: ${user_id} ;;
+  }
+
 }
