@@ -49,7 +49,13 @@ view: orders {
 
   measure: count {
     type: count
+    html: {{ rendered_value }} | {{Orders_sum._rendered_value }} of total  ;;
     #drill_fields: [orders*]
+  }
+
+  measure: Orders_sum {
+    type: sum
+    sql: ${user_id} ;;
   }
 
   measure: Last_Create_Date {
