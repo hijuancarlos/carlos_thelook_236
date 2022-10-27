@@ -1,5 +1,5 @@
 - dashboard: testUDDJSII
-  title: Test Ticket 523578 Scenario G
+  title:  Test Ticket 538963 API Second
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
