@@ -1,5 +1,5 @@
-- dashboard: testUDDJS
-  title: Test Ticket 538963 API
+- dashboard: secondtestuddjs
+  title: Secondtestuddjs
   layout: newspaper
   #preferred_viewer: dashboards-next
   description: ''
@@ -510,7 +510,7 @@
     height: 3
   filters:
   - name: Count
-    title: Count
+    title: Cout
     type: field_filter
     default_value: ''
     allow_multiple_values: true
