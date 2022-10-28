@@ -508,7 +508,7 @@
     height: 3
   filters:
   - name: Count
-    title: Count
+    title: State
     type: field_filter
     default_value: ''
     allow_multiple_values: true
