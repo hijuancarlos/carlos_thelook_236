@@ -236,3 +236,14 @@ explore: dt_timeline_test {}
 #>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
 
 explore: dt_pivot_image_test {}
+
+include: "//exchange_rate/views/**/*.view"
+explore: cities_lat_lon {
+  from: lat_long
+  label: "Distances between Cities"
+  join: distances {
+    sql_on: ${cities_lat_lon.city}=${distances.city} ;;
+    relationship: one_to_one
+    type: left_outer
+  }
+}
