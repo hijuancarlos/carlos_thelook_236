@@ -12,9 +12,3 @@ constant: get_first_name{
   }
 #=======
 #new_lookml_runtime: yes
-
-
-remote_dependency: exchange_rate {
-  url: "https://github.com/hijuancarlos/Cities_Data_Lat_Lon.git"
-  ref: "master"
-}
