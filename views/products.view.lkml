@@ -62,4 +62,11 @@ measure: total_retail_price {
       value: "50"
     }
   }
+
+  ###
+  measure: lowest_price {
+   type: min
+   sql: ${TABLE}.retail_price ;;
+   value_format_name: usd_0
+  }
 }
