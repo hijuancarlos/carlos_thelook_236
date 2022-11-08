@@ -14,8 +14,8 @@ view: test_j {
     sql:
     CASE
     WHEN  {% date_start f_filter%}  is not null AND {% date_end f_filter%} is not null
-    THEN (${TABLE}.created_at >= {% date_start f_filter%} AND ${TABLE}.created_at < {% date_end f_filter%})
-    ELSE (${TABLE}.created_at >= {% date_start f_filter%} OR ${TABLE}.created_at < {% date_end f_filter%})
+    THEN (${TABLE}.returned_at >= {% date_start f_filter%} AND ${TABLE}.returned_at < {% date_end f_filter%})
+    ELSE (${TABLE}.returned_at >= {% date_start f_filter%} OR ${TABLE}.returned_at < {% date_end f_filter%})
     END;;
   }
 
