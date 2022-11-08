@@ -9,7 +9,7 @@ view: test_j {
   }
 
 
-  filter: filter_date {
+  filter: f_filter {
     type: date
     sql:
     CASE
