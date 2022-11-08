@@ -8,6 +8,17 @@ view: test_j {
     sql: ${TABLE}.id ;;
   }
 
+
+  filter: filter_date {
+    type: date
+    sql:
+    CASE
+    WHEN  {% date_start f_filter%}  is not null AND {% date_end f_filter%} is not null
+    THEN (${TABLE}.created_at >= {% date_start f_filter%} AND ${TABLE}.created_at < {% date_end f_filter%})
+    ELSE (${TABLE}.created_at >= {% date_start f_filter%} OR ${TABLE}.created_at < {% date_end f_filter%})
+    END;;
+  }
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
