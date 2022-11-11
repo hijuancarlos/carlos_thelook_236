@@ -118,5 +118,15 @@ dimension: TEST {
     drill_fields: [id,user_id,status]
     #sql_distinct_key: ${user_id} ;;
   }
+  #bug testing
+  measure: negative_count {
+    type: number
+    sql: ${count_of_cancellations}*-1 ;;
+  }
+
+  measure: negative_1 {
+    type: number
+    sql: ${count_of_cancellations}*-1+1;;
+  }
 
 }
