@@ -74,7 +74,8 @@
     series_types: {}
     hidden_fields: []
     y_axes: []
-    listen: {}
+    listen:
+      Email: user.email
     row: 54
     col: 0
     width: 8
@@ -760,8 +761,23 @@
     hidden_fields: []
     y_axes: []
     defaults_version: 1
-    listen: {}
+    listen:
+      Email: user.email
     row: 12
     col: 0
     width: 24
     height: 5
+  filters:
+  - name: Email
+    title: Email
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: system__activity
+    explore: history
+    listens_to_filters: []
+    field: user.email

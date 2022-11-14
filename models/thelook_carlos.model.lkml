@@ -236,3 +236,11 @@ explore: dt_timeline_test {}
 #>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
 
 explore: dt_pivot_image_test {}
+
+datagroup: test_dt_users {
+  sql_trigger: SELECT CURRENT_DATE; ;;
+  #interval_trigger: "5 minutes"
+  }
+
+explore: dt_users {
+}
