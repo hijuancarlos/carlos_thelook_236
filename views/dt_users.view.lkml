@@ -18,7 +18,7 @@ view: dt_users {
     #sql_trigger_value: SELECT CURDATE() ;;
     #interval_trigger: "5 minutes"
     #datagroup_trigger: test_dt_users_2
-
+    persist_for: "3 minutes"
     indexes: ["id"]
 
     }

@@ -252,5 +252,4 @@ datagroup: test_dt_users_2 {
 }
 
 explore: dt_users {
-  persist_for: "3 minutes"
 }
