@@ -1,24 +1,27 @@
 view: dt_users {
   derived_table: {
     sql: SELECT
-          users.id  AS `users.id`,
-          users.first_name  AS `users.first_name`,
-          users.last_name  AS `users.last_name`,
-          users.email  AS `users.email`,
-          users.gender  AS `users.gender`,
-          users.age  AS `users.age`,
-          users.city  AS `users.city`,
-          users.country  AS `users.country`,
-          users.state AS `users.state`,
-          users.zip  AS `users.zip`
+          users.id  AS id,
+          users.first_name  AS first_name,
+          users.last_name  AS last_name,
+          users.email  AS email,
+          users.gender  AS gender,
+          users.age  AS age,
+          users.city  AS city,
+          users.country  AS country,
+          users.state AS state,
+          users.zip  AS zip
       FROM demo_db.users
       ORDER BY
-          users.id
-      LIMIT 500
+          id
        ;;
     #sql_trigger_value: SELECT CURDATE() ;;
-    interval_trigger: "5 minutes"
-    indexes: ["id"]}
+    #interval_trigger: "5 minutes"
+    indexes: ["id"]
+    datagroup_trigger: test_dt_users
+    }
+
+
 
   measure: count {
     type: count
@@ -28,52 +31,52 @@ view: dt_users {
   dimension: users_id {
     primary_key: yes
     type: number
-    sql: ${TABLE}.`users.id` ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: users_first_name {
     type: string
-    sql: ${TABLE}.`users.first_name` ;;
+    sql: ${TABLE}.first_name ;;
   }
 
   dimension: users_last_name {
     type: string
-    sql: ${TABLE}.`users.last_name` ;;
+    sql: ${TABLE}.last_name ;;
   }
 
   dimension: users_email {
     type: string
-    sql: ${TABLE}.`users.email` ;;
+    sql: ${TABLE}.email ;;
   }
 
   dimension: users_gender {
     type: string
-    sql: ${TABLE}.`users.gender` ;;
+    sql: ${TABLE}.gender ;;
   }
 
   dimension: users_age {
     type: number
-    sql: ${TABLE}.`users.age` ;;
+    sql: ${TABLE}.age ;;
   }
 
   dimension: users_city {
     type: string
-    sql: ${TABLE}.`users.city` ;;
+    sql: ${TABLE}.city ;;
   }
 
   dimension: users_country {
     type: string
-    sql: ${TABLE}.`users.country` ;;
+    sql: ${TABLE}.country ;;
   }
 
   dimension: users_state {
     type: string
-    sql: ${TABLE}.`users.state` ;;
+    sql: ${TABLE}.state ;;
   }
 
   dimension: users_zip {
     type: number
-    sql: ${TABLE}.`users.zip` ;;
+    sql: ${TABLE}.zip ;;
   }
 
   set: detail {

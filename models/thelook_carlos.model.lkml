@@ -240,8 +240,8 @@ explore: dt_timeline_test {}
 explore: dt_pivot_image_test {}
 
 datagroup: test_dt_users {
-  sql_trigger: SELECT CURRENT_DATE; ;;
-  #interval_trigger: "5 minutes"
+  #ql_trigger: SELECT CURRENT_DATE; ;;
+  interval_trigger: "5 minutes"
   }
 
 explore: dt_users {
