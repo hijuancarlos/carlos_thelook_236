@@ -22,6 +22,8 @@ explore: dt_orders{}
 
 explore: imgsrc1onerroralert2 {}
 
+explore: test_j {}
+
 explore: account {}
 
 explore: billion_orders {
@@ -236,3 +238,18 @@ explore: dt_timeline_test {}
 #>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
 
 explore: dt_pivot_image_test {}
+
+datagroup: test_dt_users {
+  sql_trigger: SELECT EXTRACT(MINUTE FROM CURRENT_TIMESTAMP()) ;;
+  #interval_trigger: "5 minutes"
+  }
+
+
+datagroup: test_dt_users_2 {
+  #sql_trigger: SELECT EXTRACT(MINUTE FROM CURRENT_TIMESTAMP()) ;;
+  #interval_trigger: "5 minutes"
+  max_cache_age: "3 minutes"
+}
+
+explore: dt_users {
+}

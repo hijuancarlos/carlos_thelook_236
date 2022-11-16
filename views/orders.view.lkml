@@ -138,4 +138,13 @@ dimension: TEST {
     #sql_distinct_key: ${user_id} ;;
   }
 
+  measure: test_cunt {
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
+  measure: test_avg {
+    type: number
+    sql: 1.0 * ${test_cunt}/${Orders_sum};;
+  }
 }
