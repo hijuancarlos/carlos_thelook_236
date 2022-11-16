@@ -2,6 +2,15 @@ view: orders {
   sql_table_name: demo_db.orders ;;
   drill_fields: [id]
 
+  parameter: date_start {
+    type: date
+    description: "Use this field to select a date to filter results by."
+  }
+
+  parameter: date_end {
+    type: date
+    description: "Use this field to select a date to filter results by."
+  }
 
   dimension: id {
     primary_key: yes
@@ -97,7 +106,7 @@ view: orders {
       order_items.count,
       ten_million_orders.count
     ]
-  }
+}
 
 dimension: TEST {
   type: string
@@ -110,6 +119,16 @@ dimension: TEST {
     type: string
     sql: (select * from  [SCHEMA].NOT_NULL_GA_SESSION_CDS_SURROGATE_KEY);;
 
+  }
+
+  dimension: id_null {
+    type: number
+    sql:
+      CASE
+        WHEN ${TABLE}.id IS NULL THEN 100000000
+        ELSE ${TABLE}.id
+      END
+    ;;
   }
 
   measure: count_of_cancellations {
