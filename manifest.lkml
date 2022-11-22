@@ -12,3 +12,8 @@ constant: get_first_name{
   }
 #=======
 #new_lookml_runtime: yes
+
+remote_dependency: snowflake_usage {
+  url: "https://github.com/llooker/snowflake-usage-block.git"
+  ref: "master"
+}
