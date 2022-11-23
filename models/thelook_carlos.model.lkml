@@ -209,7 +209,9 @@ explore: ten_million_orders {
 
 explore: test {}
 
-explore: users {}
+explore: users {
+  sql_always_where: ${test_city} <> 'Abbeville' ;;
+}
 
 explore: user_data {
   join: users {
