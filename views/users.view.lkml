@@ -185,6 +185,15 @@ view: users {
 #>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
   }
 
+  filter: two_states {
+    type: string
+    sql: ${TABLE}.state != "New York"  ;;
+  }
+
+  dimension: test_state {
+    type: string
+    sql: ${TABLE}.state;;
+  }
 
   dimension_group: usage {
     type: time
