@@ -69,4 +69,20 @@ measure: total_retail_price {
    sql: ${TABLE}.retail_price ;;
    value_format_name: usd_0
   }
+
+  dimension: brand_logo_2 {
+    type: string
+    sql:
+    case when (${TABLE}.department is not null) then ${TABLE}.department else "" end;;
+    html:
+      {% if rendered_value == "Men" %}
+      <img src="http://drive.google.com/uc?export=view&id=1iqWaQiLgvF1lUaE9ErhT6PhLa6uiUIdl" height="180" width="256" />
+      {% elsif rendered_value == "Woman" %}
+      <img src="http://drive.google.com/uc?export=view&id=1mwl8_595G8nXwymgQX3mxEv8VkcY2c3f" height="180" width="256" />
+      {% elsif rendered_value == "" %}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="180" width="256"/>
+      {% else %}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="180" width="256"/>
+      {% endif %} ;;
+  }
 }

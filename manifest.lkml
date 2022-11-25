@@ -1,7 +1,7 @@
 #<<<<<<< HEAD
 #project_name: "thelook_carlos"
 
-#ew_lookml_runtime: no
+#new_lookml_runtime: yes
 
 constant: get_user_name {
   value: "(SELECT status FROM demo_db.orders WHERE id = ${TABLE}.id)"
