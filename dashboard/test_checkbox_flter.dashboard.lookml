@@ -15,7 +15,6 @@
   elements:
   - title: Test_check_box_filters
     name: Test_check_box_filters
-    model: thelook_carlos
     explore: order_items
     type: table
     fields: [users.state, users.avg_age, users.count, orders.count, orders.Orders_sum,
@@ -39,7 +38,18 @@
     ui_config:
       type: checkboxes
       display: popover
-    model: thelook_carlos
     explore: order_items
     listens_to_filters: []
     field: users.state
+  - name: Channel
+    title: Channel
+    type: field_filter
+    field: users.state
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    explore: order_items
+    listens_to_filters: []
