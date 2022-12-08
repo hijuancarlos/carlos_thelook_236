@@ -67,6 +67,32 @@ view: orders {
     sql: ${user_id} ;;
   }
 
+  ##### Agustin Test
+
+  measure: stat_drill {
+    type: string
+    sql: ${TABLE}.status ;;
+    html:  <p style = "color:red" >{{linked_value}} </p> ;;
+    link: {
+      label: "Count per Year and Status"
+      url: "{{ link }}&fields=orders.drill_set_combo_1*"
+    }
+    link: {
+      label: "Count User id per Status"
+      url: "{{ link }}&fields=view_name.drill_set_combo_2*"
+    }
+  }
+
+  set: drill_set_combo_1 {
+    fields: [orders.count,orders.created_year]
+  }
+
+  set: drill_set_combo_2 {
+    fields: [orders.count,orders.user_id]
+  }
+
+  ############
+
   measure: Last_Create_Date {
     type: date
     #sql: MAX(${TABLE}.created_at) ;;
