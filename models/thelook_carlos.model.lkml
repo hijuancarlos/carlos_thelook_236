@@ -130,6 +130,9 @@ explore: orders {
 }
 
 explore: order_items {
+  always_filter: {
+    filters: [orders.id: "430"]
+  }
    join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
