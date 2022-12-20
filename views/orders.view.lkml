@@ -134,12 +134,7 @@ view: orders {
     ]
 }
 
-dimension: TEST {
-  type: string
-  sql: CASE WHEN ${is_max_close_date} THEN @{get_user_name} ELSE ${max_create_date} END;;
-  # sql: @{get_user_name} ;;
 
-}
 
   dimension: new_dimension{
     type: string
@@ -182,5 +177,25 @@ dimension: TEST {
   measure: test_avg {
     type: number
     sql: 1.0 * ${test_cunt}/${Orders_sum};;
+  }
+
+  filter: date_filter {
+    type: date
+  }
+
+  measure: orders_selected_month {
+    type: count_distinct
+    sql:
+      case
+        when {% condition date_filter %} ${created_raw} {% endcondition %} then ${id}
+      end ;;
+  }
+
+  measure: orders_selected_month_ly {
+    type: count_distinct
+    sql:
+      case
+        when {% condition date_filter %} DATE_ADD(${created_raw}, INTERVAL -1 Year) {% endcondition %} then ${id}
+      end ;;
   }
 }

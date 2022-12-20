@@ -55,4 +55,11 @@ view: order_items {
     value_format_name: usd
 
   }
+
+  measure:sumMoney_12M  {
+    type: sum
+    sql: Select ${sale_price} where ${returned_year} < 2015;;
+    value_format_name: usd
+
+  }
 }
