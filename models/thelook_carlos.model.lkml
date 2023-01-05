@@ -129,6 +129,8 @@ explore: orders {
   }
 }
 
+
+
 explore: order_items {
    join: orders {
     type: left_outer
