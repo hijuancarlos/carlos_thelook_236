@@ -185,6 +185,15 @@ view: users {
 #>>>>>>> branch 'master' of git@github.com:hijuancarlos/gcpm2210_thelook-.git
   }
 
+  filter: two_states {
+    type: string
+    sql: ${TABLE}.state != "New York"  ;;
+  }
+
+  dimension: test_state {
+    type: string
+    sql: ${TABLE}.state;;
+  }
 
   dimension_group: usage {
     type: time
@@ -356,4 +365,22 @@ view: users {
     sql: 0 ;;
     drill_fields: [products.total_retail_price,products.department,users.state]
   }
+
+
+    dimension: brand_logo_2 {
+      type: string
+      sql: ${TABLE}.gender ;;
+      html:
+      {% if rendered_value == "f" %}
+      <img src="http://drive.google.com/uc?export=view&id=1iqWaQiLgvF1lUaE9ErhT6PhLa6uiUIdl" height="180" width="256" />
+      {% elsif rendered_value == "m" %}
+      <img src="http://drive.google.com/uc?export=view&id=1mwl8_595G8nXwymgQX3mxEv8VkcY2c3f" height="180" width="256" />
+
+      {% elsif rendered_value == "" %}
+      <img src="http://drive.google.com/uc?export=view&id=12BwdwalexyiQjl3gC_lzE3yqfSI1BEpS" height="180" width="256"/>
+      {% else %}
+      <img src="http://drive.google.com/uc?export=view&id=1UmTW3Sycq3LeBUnEcVajYHdneBnZljYh" height="180" width="256"/>
+      {% endif %} ;;
+      }
+
 }

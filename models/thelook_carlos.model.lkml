@@ -1,5 +1,5 @@
 connection: "thelook"
-
+#test
 # include all the views
 include: "/views/**/*.view"
 include: "/dashboard/*.dashboard"
@@ -14,6 +14,48 @@ persist_with: thelook_carlos_default_datagroup
 
 #<<<<<<< HEAD
 explore: dt_test_529490 {}
+
+# Repro ticket 544848 Explore
+explore: dt_orders_order_items {
+  join: inventory_items {
+    type: left_outer
+    sql_on: ${dt_orders_order_items.inventory_item_id} = ${inventory_items.id} ;;
+    relationship: many_to_one
+  }
+
+  aggregate_table: by_date {
+    query: {
+      dimensions: [created_date, order_id, returned_date]
+      timezone: "America/Los_Angeles"
+    }
+
+    materialization: {
+      persist_for: "90 minutes"
+    }
+  }
+
+  aggregate_table: by_month {
+    query: {
+      dimensions: [created_month, order_id, returned_month]
+      timezone: "America/Los_Angeles"
+    }
+
+    materialization: {
+      persist_for: "90 minutes"
+    }
+  }
+
+  aggregate_table: by_year {
+    query: {
+      dimensions: [created_year, inventory_items.id, order_id, returned_year]
+      timezone: "America/Los_Angeles"
+    }
+
+    materialization: {
+      persist_for: "90 minutes"
+    }
+  }
+}
 
 explore: dt_orders{}
 #=======
@@ -105,7 +147,7 @@ explore: incremental_pdts_test {}
 explore: ints {}
 
 explore: inventory_items {
-  fields: [ALL_FIELDS*, -inventory_items.test_using_a_measure, -inventory_items.avg_test, -products.total_test]
+  #fields: [ALL_FIELDS*, -inventory_items.test_using_a_measure, -inventory_items.avg_test, -products.total_test]
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
@@ -125,6 +167,17 @@ explore: orders {
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+
+
+}
+
+explore: order_items_test {
+  view_name: order_items
+  join: orders {
+    type: left_outer
+    sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one
   }
 }
@@ -155,6 +208,7 @@ explore: order_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+
 }
 
 explore: pegdates {}
@@ -211,7 +265,9 @@ explore: ten_million_orders {
 
 explore: test {}
 
-explore: users {}
+explore: users {
+  sql_always_where: ${test_city} <> 'Abbeville' ;;
+}
 
 explore: user_data {
   join: users {
@@ -253,5 +309,7 @@ datagroup: test_dt_users_2 {
   max_cache_age: "3 minutes"
 }
 
-explore: dt_users {
-}
+explore: dt_users {}
+
+
+explore: ndt_users {}

@@ -67,6 +67,32 @@ view: orders {
     sql: ${user_id} ;;
   }
 
+  ##### Agustin Test
+
+  measure: stat_drill {
+    type: string
+    sql: ${TABLE}.status ;;
+    html:  <p style = "color:red" >{{linked_value}} </p> ;;
+    link: {
+      label: "Count per Year and Status"
+      url: "{{ link }}&fields=orders.drill_set_combo_1*"
+    }
+    link: {
+      label: "Count User id per Status"
+      url: "{{ link }}&fields=view_name.drill_set_combo_2*"
+    }
+  }
+
+  set: drill_set_combo_1 {
+    fields: [orders.count,orders.created_year]
+  }
+
+  set: drill_set_combo_2 {
+    fields: [orders.count,orders.user_id]
+  }
+
+  ############
+
   measure: Last_Create_Date {
     type: date
     #sql: MAX(${TABLE}.created_at) ;;
@@ -108,12 +134,7 @@ view: orders {
     ]
 }
 
-dimension: TEST {
-  type: string
-  sql: CASE WHEN ${is_max_close_date} THEN @{get_user_name} ELSE ${max_create_date} END;;
-  # sql: @{get_user_name} ;;
 
-}
 
   dimension: new_dimension{
     type: string
@@ -137,6 +158,16 @@ dimension: TEST {
     drill_fields: [id,user_id,status]
     #sql_distinct_key: ${user_id} ;;
   }
+  #bug testing
+  measure: negative_count {
+    type: number
+    sql: ${count_of_cancellations}*-1 ;;
+  }
+
+  measure: negative_1 {
+    type: number
+    sql: ${count_of_cancellations}*-1+1;;
+  }
 
   measure: test_cunt {
     type: count_distinct
@@ -146,5 +177,25 @@ dimension: TEST {
   measure: test_avg {
     type: number
     sql: 1.0 * ${test_cunt}/${Orders_sum};;
+  }
+
+  filter: date_filter {
+    type: date
+  }
+
+  measure: orders_selected_month {
+    type: count_distinct
+    sql:
+      case
+        when {% condition date_filter %} ${created_raw} {% endcondition %} then ${id}
+      end ;;
+  }
+
+  measure: orders_selected_month_ly {
+    type: count_distinct
+    sql:
+      case
+        when {% condition date_filter %} DATE_ADD(${created_raw}, INTERVAL -1 Year) {% endcondition %} then ${id}
+      end ;;
   }
 }

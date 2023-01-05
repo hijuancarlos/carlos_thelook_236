@@ -70,17 +70,17 @@ view: inventory_items {
     html: {{ rendered_value | append: "%" }} ;;
   }
 
-  measure: test_using_a_measure {
-    type: number
-    sql: ${inventory_items.total_cost} / ${order_items.count};;
-  }
+  # measure: test_using_a_measure {
+  #   type: number
+  #   sql: ${inventory_items.total_cost} / ${order_items.count};;
+  # }
 
-  measure: avg_test {
-    type: average
-    sql: ${cost} ;;
-    filters: {
-      field: order_items.order_id
-      value:"100"
-    }
-  }
+  # measure: avg_test {
+  #   type: average
+  #   sql: ${cost} ;;
+  #   filters: {
+  #     field: order_items.order_id
+  #     value:"100"
+  #   }
+  # }
 }
