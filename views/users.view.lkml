@@ -39,6 +39,16 @@ view: users {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: audit_formatted {
+    group_label: "DATE_MODIFIED"
+    label: "DATE_MODIFIED"
+    sql: ${TABLE}.created_at ;;
+    #html: {{ rendered_value | date: current_user.date_format._value }};;
+    value_format: "dd mmm yyyy"
+  }
+
+
+
   measure: count_test {
     type: count_distinct
     sql: ${gender} ;;
@@ -213,6 +223,14 @@ view: users {
     sql: date_format((${TABLE}.created_at),'%Y%m%d');;
 
   }
+
+  dimension: date_formatted_3 {
+    type: string
+    sql: date_format((${TABLE}.created_at),' %b %e, %Y');;
+
+  }
+
+
   dimension: max_date_1 {
     type: string
     sql: date_format((SELECT max(${TABLE}.created_at) FROM users),'%Y%m%d');;
