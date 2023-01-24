@@ -31,6 +31,7 @@ view: flights {
   }
 
   dimension: carrier {
+    label: "Please enter your name and credentials as you would like them to appear on your certificate (i.e. "John Doe, MD, PhD, FACP")."
     type: string
     sql: ${TABLE}.carrier ;;
   }
