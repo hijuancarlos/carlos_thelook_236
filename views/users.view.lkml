@@ -159,6 +159,7 @@ view: users {
     sql: ${TABLE}.city ;;
     suggest_explore: users_test
     suggest_dimension: dt_suggestions.users_state
+    drill_fields: [detail*]
     }
 
   dimension: date_formatted_1 {
@@ -201,8 +202,10 @@ view: users {
   }
 
   dimension: test_state {
+    label: "State with Drill"
     type: string
     sql: ${TABLE}.state;;
+    drill_fields: [detail*]
   }
 
   dimension_group: usage {
