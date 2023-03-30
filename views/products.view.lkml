@@ -80,7 +80,7 @@ view: products {
   }
 
   measure: attributed_revenue_amount {
-    label: "Attributed Revenue Amount (no drill)"
+    #label: "Attributed Revenue Amount (no drill)"
     label_from_parameter: attribution_model
     type: sum
     value_format: "#,##0"
