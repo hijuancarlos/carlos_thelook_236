@@ -23,6 +23,7 @@ view: users {
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
+    drill_fields: [id]
   }
 
   dimension_group: created {
@@ -159,6 +160,7 @@ view: users {
     sql: ${TABLE}.city ;;
     suggest_explore: users_test
     suggest_dimension: dt_suggestions.users_state
+    drill_fields: [id,first_name,last_name,zip,city,state,country]
     }
 
   dimension: date_formatted_1 {
@@ -201,8 +203,10 @@ view: users {
   }
 
   dimension: test_state {
+    label: "State with Drill"
     type: string
     sql: ${TABLE}.state;;
+    drill_fields: [id,first_name,last_name,zip,city,state,country]
   }
 
   dimension_group: usage {
