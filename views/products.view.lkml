@@ -77,10 +77,18 @@ view: products {
       value: "w_shape_percentage"
       label: "W Shaped Attribution"
     }
+    allowed_value: {
+      value: "Count"
+      label: "Total"
+    }
+    allowed_value: {
+      value: "total_test"
+      label: "Test Total"
+    }
   }
 
   measure: attributed_revenue_amount {
-    #label: "Attributed Revenue Amount (no drill)"
+    label: "Attributed Revenue Amount (no drill)"
     label_from_parameter: attribution_model
     type: sum
     value_format: "#,##0"
@@ -95,7 +103,8 @@ view: products {
   measure: total_retail_price_locale {
     label: "test_locale"
     type: sum
-    sql: ${retail_price} ;;
+    sql:  ${TABLE}.{% parameter attribution_model %} ;;
+    label_from_parameter: attribution_model
   }
 
 
