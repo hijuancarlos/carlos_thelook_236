@@ -7,7 +7,7 @@
       "Keys can be any string; choose whatever scheme helps you stay organized",
       "Then, set your Lookml label and description parameters to the desired key values.",
       "To choose this file as the master key list and as the one to validate against",
-      "set its locale code ('en') as the default_locale in the manifest file"
+      "set its locale code ('es_ES') as the default_locale in the manifest file"
     ],
     "value": "Translation for Comment"
   },
@@ -17,5 +17,5 @@
   },
   "My Other Key": "My Other Translation",
   "my.more.programmatic.key": "A Translation",
-  "My description":"My example description"
+  "My description":"Mi descripcion de ejemplo"
 }
