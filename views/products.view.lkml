@@ -78,11 +78,11 @@ view: products {
       label: "W Shaped Attribution"
     }
     allowed_value: {
-      value: "Count"
+      value: "retail_price"
       label: "Total"
     }
     allowed_value: {
-      value: "total_test"
+      value: "rank"
       label: "Test Total"
     }
   }
