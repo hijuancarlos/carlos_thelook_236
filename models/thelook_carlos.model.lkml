@@ -314,3 +314,5 @@ explore: dt_users {}
 
 
 explore: ndt_users {}
+
+explore: products_test_drill_down {}

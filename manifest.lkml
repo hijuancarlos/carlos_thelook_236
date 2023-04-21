@@ -1,4 +1,4 @@
-new_lookml_runtime: yes
+new_lookml_runtime: no
 
 constant: get_user_name {
   value: "(SELECT status FROM demo_db.orders WHERE id = ${TABLE}.id)"
