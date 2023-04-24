@@ -2,7 +2,7 @@
   title: Filter panel bug
   layout: newspaper
   preferred_viewer: dashboards-next
-  description: ''
+  description: 'My description'
   filters_location_top: false
   preferred_slug: IVS75NeQ5Tk8smJKJSo5uZ
   elements:

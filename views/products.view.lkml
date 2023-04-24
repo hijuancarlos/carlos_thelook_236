@@ -43,12 +43,72 @@ view: products {
     sql: ${TABLE}.sku ;;
   }
 
-measure: total_retail_price {
+  measure: total_retail_price {
   type: sum
   sql: ${retail_price} ;;
-}
+  }
+####TEST
+
+  parameter: attribution_model {
+    label: "Attribution Model"
+    type: unquoted
+    default_value: "full_path_percentage"
+    allowed_value: {
+      value: "full_path_percentage"
+      label: "Full Path Attribution"
+    }
+    allowed_value: {
+      value: "first_click_percentage"
+      label: "First Touch Attribution"
+    }
+    allowed_value: {
+      value: "custom_model_percentage"
+      label: "Custom Model Attribution"
+    }
+    allowed_value: {
+      value: "last_anon_click_percentage"
+      label: "Lead Creation Attribution"
+    }
+    allowed_value: {
+      value: "u_shape_percentage"
+      label: "U Shaped Attribution"
+    }
+    allowed_value: {
+      value: "w_shape_percentage"
+      label: "W Shaped Attribution"
+    }
+    allowed_value: {
+      value: "retail_price"
+      label: "Total"
+    }
+    allowed_value: {
+      value: "rank"
+      label: "Test Total"
+    }
+  }
+
+  measure: attributed_revenue_amount {
+    label: "Attributed Revenue Amount (no drill)"
+    label_from_parameter: attribution_model
+    type: sum
+    value_format: "#,##0"
+    sql: (${retail_price})/100 ;;
+    html: {% if retail_price._value > 1 %}
+      <a style="color:inherit" href="#drillmenu" target="_self"> {{ rendered_value }} </a><img src="https://cdn.bizible.com/images/currency-warning.png" style="height: 20px"/>
+      {% else %}
+      <a style="color:inherit" href="#drillmenu" target="_self"> {{ rendered_value }} </a> <span style="font-size: 70%">{{opportunities.display_currency_opps._value}}</span>
+      {% endif %} ;;
+  }
+
+  measure: total_retail_price_locale {
+    label: "test_locale"
+    type: sum
+    sql:  ${TABLE}.{% parameter attribution_model %} ;;
+    label_from_parameter: attribution_model
+  }
 
 
+#####
   measure: count {
     type: count
     drill_fields: [id, item_name, inventory_items.count]

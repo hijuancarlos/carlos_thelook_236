@@ -3,9 +3,8 @@ view: products_test_drill_down {
   sql_table_name: demo_db.products ;;
   drill_fields: [brand, id, category, department, item_name, retail_price]
   set: drills {
-    fields: [brand, id, category, department, item_name, retail_price,inventory_items.cost, inventory_items.sold, inventory_items.created_date]
+    fields: [brand, id, category, department, item_name, retail_price]
   }
-
 
   dimension: id {
     primary_key: yes
