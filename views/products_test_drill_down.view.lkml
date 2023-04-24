@@ -1,9 +1,9 @@
 view: products_test_drill_down {
 
   sql_table_name: demo_db.products ;;
-  drill_fields: [brand, id, category, department, item_name, retail_price,inventory_items.id, inventory_items.sold, inventory_items.created_date, inventory_items.count]
+  drill_fields: [id,brand,category,department,item_name,rank,retail_price,total_capital,total_loan_amount,total_percent_of_capital,cre_loan_amount,asset_real_estate_details*,asset_real_estate_status*,inventory_items.id, inventory_items.cost, inventory_items.create_date,inventory_items.create_time, inventory_items.create_week, inventory_items.create_month, inventory_items.create_quarter,inventory_items.create_year, inventory_items.product_id, inventory_items.sold_date,inventory_items.sold_week, inventory_items.sold_month, inventory_items.sold_quarter, inventory_items.sold_year, inventory_items.sold_total_cost, inventory_items.sold_cost_by_100_liquid, inventory_items.cost_by_100_format]
   set: drills {
-    fields: [brand, id, category, department, item_name, retail_price,inventory_items.id, inventory_items.sold, inventory_items.created_date, inventory_items.count]
+    fields: [id,brand,category,department,item_name,rank,retail_price,total_capital,total_loan_amount,total_percent_of_capital,cre_loan_amount,asset_real_estate_details*,asset_real_estate_status*,inventory_items.id, inventory_items.cost, inventory_items.create_date,inventory_items.create_time, inventory_items.create_week, inventory_items.create_month, inventory_items.create_quarter,inventory_items.create_year, inventory_items.product_id, inventory_items.sold_date,inventory_items.sold_week, inventory_items.sold_month, inventory_items.sold_quarter, inventory_items.sold_year, inventory_items.sold_total_cost, inventory_items.sold_cost_by_100_liquid, inventory_items.cost_by_100_format]
   }
 
   dimension: id {
@@ -73,6 +73,7 @@ view: products_test_drill_down {
   dimension: department {
     type: string
     sql: ${TABLE}.department;;
+    drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*,test*]
   }
 
 
