@@ -11,24 +11,33 @@ view: products_test_drill_down {
     type: number
     sql: ${TABLE}.id ;;
     drill_fields: [drills*]
+    group_label: "Entity Information"
+    description: "The unique ID of the APM Entity."
   }
 
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;
     drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*]
+    label: "Entity Additional Information"
+    group_label: "Entity Information Brand"
+    description: "Information provided to users seeking more information about a specific APM Entity; e.g. URL of organization’s website, name and phone number of a representative."
   }
 
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
     drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*,inventory_items.id, inventory_items.sold, inventory_items.created_date, inventory_items.count]
+    group_label: "Entity Information"
+    description: "The first line of the organization’s address. Category"
   }
 
   dimension: real_state_type{
     type: string
     sql: COALESCE(NULLIF(TRIM(${TABLE}.category), ''), 'Unknown') ;;
     drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*]
+    group_label: "Entity Information"
+    description: "The second line of the organization’s address. Real Statre type"
   }
 
   dimension: loan_amount {
