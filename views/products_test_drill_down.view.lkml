@@ -1,9 +1,9 @@
 view: products_test_drill_down {
 
   sql_table_name: demo_db.products ;;
-  drill_fields: [brand, id, category, department, item_name, retail_price]
+  drill_fields: [brand, id, category, department, item_name, retail_price,inventory_items.id, inventory_items.sold, inventory_items.created_date, inventory_items.count]
   set: drills {
-    fields: [brand, id, category, department, item_name, retail_price]
+    fields: [brand, id, category, department, item_name, retail_price,inventory_items.id, inventory_items.sold, inventory_items.created_date, inventory_items.count]
   }
 
   dimension: id {
@@ -16,24 +16,26 @@ view: products_test_drill_down {
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;
-    drill_fields: [drills*]
+    drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*]
   }
 
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
-    drill_fields: [drills*]
+    drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*,inventory_items.id, inventory_items.sold, inventory_items.created_date, inventory_items.count]
   }
 
   dimension: real_state_type{
     type: string
     sql: COALESCE(NULLIF(TRIM(${TABLE}.category), ''), 'Unknown') ;;
+    drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*]
   }
 
   dimension: loan_amount {
     type: number
     value_format_name: usd_0
     sql: ROUND(${TABLE}.retail_price * 10000) ;;
+    drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*]
   }
 
   measure: total_loan_amount{
@@ -98,7 +100,7 @@ view: products_test_drill_down {
 
   measure: count {
     type: count
-    drill_fields: [id, item_name, inventory_items.count]
+    drill_fields: [id,brand,category,department,item_name,rank,retail_price,total_capital,total_loan_amount,total_percent_of_capital,cre_loan_amount,asset_real_estate_details*,asset_real_estate_status*,inventory_items.id, inventory_items.cost, inventory_items.create_date,inventory_items.create_time, inventory_items.create_week, inventory_items.create_month, inventory_items.create_quarter,inventory_items.create_year, inventory_items.product_id, inventory_items.sold_date,inventory_items.sold_week, inventory_items.sold_month, inventory_items.sold_quarter, inventory_items.sold_year, inventory_items.sold_total_cost, inventory_items.sold_cost_by_100_liquid, inventory_items.cost_by_100_format]
   }
 
   set: test  {
