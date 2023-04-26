@@ -8,10 +8,10 @@
   - title: Test long drills
     name: Test long drills
     model: thelook_carlos
-    explore: products_test_drill_down
+    explore: products_test
     type: looker_bar
-    fields: [products_test_drill_down.count, products_test_drill_down.department]
-    sorts: [products_test_drill_down.count desc]
+    fields: [products_test.count, products_test.department]
+    sorts: [products_test.count desc]
     limit: 10
     column_limit: 50
     x_axis_gridlines: false

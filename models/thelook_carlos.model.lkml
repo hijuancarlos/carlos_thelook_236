@@ -314,11 +314,3 @@ explore: dt_users {}
 
 
 explore: ndt_users {}
-
-explore: products_test_drill_down {
-  join: inventory_items {
-    type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products_test_drill_down.id} ;;
-    relationship: many_to_one
-  }
-}
