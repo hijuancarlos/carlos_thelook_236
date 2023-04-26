@@ -16,12 +16,12 @@ explore: products_filter_by_user_attribute {
   #}
 }
 
-explore: products_test {
+explore: products_test_1 {
   from: products_test_drill_down
   join: inventory_items {
     view_label: "inventory"
     type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products_test.id} ;;
+    sql_on: ${inventory_items.product_id} = ${products_test_1.id} ;;
     relationship: many_to_one
   }
 }
