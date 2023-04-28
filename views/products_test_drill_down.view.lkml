@@ -80,6 +80,7 @@ view: products_test_drill_down {
 
 
   dimension: department {
+    hidden: yes
     type: string
     sql: ${TABLE}.department;;
     drill_fields: [drills*,asset_real_estate_details*,asset_real_estate_status*,test*]
