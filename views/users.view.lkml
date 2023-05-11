@@ -40,6 +40,22 @@ view: users {
     sql: ${TABLE}.created_at ;;
   }
 
+
+  dimension_group: created_current {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: DATE_ADD(${TABLE}.created_at, INTERVAL 1700 DAY) ;;
+  }
+
+
   dimension: audit_formatted {
     group_label: "DATE_MODIFIED"
     label: "DATE_MODIFIED"

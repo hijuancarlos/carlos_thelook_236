@@ -25,3 +25,4 @@ explore: products_test_1 {
     relationship: many_to_one
   }
 }
+explore: products_test_drill_totals {}
