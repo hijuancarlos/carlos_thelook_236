@@ -8,6 +8,11 @@ view: person {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: ids {
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+
   dimension: address {
     type: string
     sql: ${TABLE}.address ;;
